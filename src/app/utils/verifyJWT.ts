@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
+
 import jwt, { JwtPayload } from "jsonwebtoken";
 import AppError from "../errors/AppError";
 import { USER_ROLE } from "../modules/User/user.constant";
@@ -16,7 +17,7 @@ type TTokenElements = {
 export const createToken = (
   tokenPayload: TTokenElements,
   secret: string,
-  expireIn: string
+  expireIn: any
 ) => {
   return jwt.sign(tokenPayload, secret, { expiresIn: expireIn });
 };

@@ -4,6 +4,8 @@ import AppError from "../../errors/AppError";
 import { createToken } from "../../utils/verifyJWT";
 import { TLoginUser, TRegisterUser } from "./auth.interface";
 import { User } from "../User/user.modal";
+import bcrypt from "bcryptjs";
+import jwt, { JwtPayload } from "jsonwebtoken";
 
 const registerUserDb = async (payload: TRegisterUser) => {
   const user = await User.isUserExistsByEmail(payload.email);
@@ -23,13 +25,13 @@ const registerUserDb = async (payload: TRegisterUser) => {
   };
   const accessToken = createToken(
     tokenPayload,
-    config.accessTokenSecret as string,
-    config.accessTokenExpiresIn as string
+    config.access_token_secret as string,
+    config.jwt_access_expire as string
   );
   const refreshToken = createToken(
     tokenPayload,
-    config.jwtRefreshSecret as string,
-    config.refreshTokenExpireIn as string
+    config.jwt_refresh_secret as string,
+    config.jwt_refresh_expire_in as string
   );
   return {
     accessToken,
@@ -62,8 +64,8 @@ const loginToDb = async (payload: TLoginUser) => {
   );
   const refreshToken = createToken(
     tokenPayload,
-    config.jwtRefreshSecret as string,
-    config.refreshTokenExpireIn as string
+    config.jwt_refresh_secret as string,
+    config.jwt_refresh_expire_in as string
   );
   return {
     accessToken,
@@ -74,7 +76,7 @@ const loginToDb = async (payload: TLoginUser) => {
 const refreshTokenDb = async (token: string) => {
   const decoded = jwt.verify(
     token,
-    config.jwtRefreshSecret as string
+    config.jwt_refresh_secret as string
   ) as JwtPayload;
   const { email, iat } = decoded;
   const user = await User.isUserExistsByEmail(email);
@@ -98,14 +100,13 @@ const refreshTokenDb = async (token: string) => {
   };
   const accessToken = createToken(
     tokenPayload,
-    config.accessTokenSecret as string,
-    config.accessTokenExpiresIn as string
+    config.access_token_secret as string,
+    config.jwt_refresh_expire_in as string
   );
   return accessToken;
 };
 // update user
 const updateUserDb = async (id: string, payload: TRegisterUser) => {
- 
   const isUserExist = await User.findById(id);
   if (!isUserExist) {
     throw new AppError(status.NOT_FOUND, "User not found withh this is");
@@ -122,7 +123,7 @@ const updateUserDb = async (id: string, payload: TRegisterUser) => {
   return newUser;
 };
 
-// change password 
+// change password
 
 const changePassword = async (
   userData: JwtPayload,
@@ -143,7 +144,7 @@ const changePassword = async (
   //hash new password
   const newHashedPassword = await bcrypt.hash(
     payload.newPassword,
-    Number(config.bcrypt_salt_rounds)
+    Number(config.bcrypt_saltround)
   );
 
   await User.findOneAndUpdate(
