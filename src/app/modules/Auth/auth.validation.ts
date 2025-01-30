@@ -14,7 +14,7 @@ const registerUserValidationSchema = z.object({
     password: z.string().min(6, "Password must be at least 6 characters"),
     phoneNumber: z.string().optional(),
     verified: z.boolean().optional(),
-    profilePhoto: z.string(),
+    profilePhoto: z.string().optional(),
   }),
 });
 

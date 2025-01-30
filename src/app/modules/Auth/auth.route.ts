@@ -10,7 +10,6 @@ import { USER_ROLE } from "../User/user.constant";
 const router = Router();
 router.post(
   "/register",
-
   validateRequest(authValidation.registerUserValidationSchema),
   authController.registerUser
 );
