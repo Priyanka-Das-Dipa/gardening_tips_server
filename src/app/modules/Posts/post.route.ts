@@ -8,7 +8,7 @@ import { postUpdateValidationSchema } from "./post.validation";
 const router = Router();
 router.post(
   "/",
-  authGaurd(USER_ROLE.USER, USER_ROLE.ADMIN),
+  // authGaurd(USER_ROLE.USER, USER_ROLE.ADMIN),
   postController.makePost
 );
 router.get("/", postController.getPosts);

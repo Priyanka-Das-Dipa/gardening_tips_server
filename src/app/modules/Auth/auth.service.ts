@@ -20,6 +20,7 @@ const registerUserDb = async (payload: TRegisterUser) => {
     name: newUser?.name,
     email: newUser?.email,
     phoneNumber: newUser?.phoneNumber,
+    profilePhoto: newUser?.profilePhoto,  
     role: newUser?.role,
     verified: newUser?.verified,
   };

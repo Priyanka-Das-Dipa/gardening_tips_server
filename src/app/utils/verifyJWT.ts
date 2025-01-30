@@ -10,6 +10,7 @@ type TTokenElements = {
   _id?: string;
   name: string;
   email: string;
+  profilePhoto?: string;
   phoneNumber?: string | undefined;
   role: keyof typeof USER_ROLE | undefined;
 };
