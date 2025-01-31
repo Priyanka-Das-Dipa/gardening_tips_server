@@ -13,6 +13,7 @@ const registerUserValidationSchema = z.object({
     // downVotesItem: z.array(z.instanceof(mongoose.Types.ObjectId)).optional(),
     password: z.string().min(6, "Password must be at least 6 characters"),
     phoneNumber: z.string().optional(),
+    address: z.string().optional(),
     // verified: z.boolean().optional(),
     profilePhoto: z.string().optional(),
   }),

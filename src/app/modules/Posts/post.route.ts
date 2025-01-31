@@ -34,7 +34,7 @@ router.put(
 );
 router.delete(
   "/delete/:postId",
-  authGaurd(USER_ROLE.USER, USER_ROLE.ADMIN),
+  // authGaurd(USER_ROLE.USER, USER_ROLE.ADMIN),
   postController.deletePostId
 );
 export const postRouter = router;

@@ -5,6 +5,7 @@ export type TRegisterUser = {
   email: string;
   phoneNumber: string;
   password: string;
+  address?: string;
   role: keyof typeof USER_ROLE;
   profilePhoto?: string;
 };
