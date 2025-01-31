@@ -16,6 +16,10 @@ router.post("/confirm-payment", user_controller_1.userController.confirmPayment)
 router.get("/:email", (0, authGaurd_1.default)(user_constant_1.USER_ROLE.USER, user_constant_1.USER_ROLE.ADMIN), user_controller_1.userController.getUserByEmail);
 router.get("/id/:id", user_controller_1.userController.getUserById);
 router.put("/follow-unfollow", (0, authGaurd_1.default)(user_constant_1.USER_ROLE.ADMIN, user_constant_1.USER_ROLE.USER), (0, validateRequest_1.default)(user_validation_1.userValidation.followUnfollowValidationSchema), user_controller_1.userController.followUnfollow);
-router.delete("/delete/:userId", (0, authGaurd_1.default)(user_constant_1.USER_ROLE.ADMIN), user_controller_1.userController.deleteUser);
-router.patch("/user-admin/:userId", (0, authGaurd_1.default)(user_constant_1.USER_ROLE.ADMIN), user_controller_1.userController.makeAdminUser);
+router.delete("/delete/:userId", 
+// authGaurd(USER_ROLE.ADMIN),
+user_controller_1.userController.deleteUser);
+router.patch("/user-admin/:userId", 
+// authGaurd(USER_ROLE.ADMIN),
+user_controller_1.userController.makeAdminUser);
 exports.userRoute = router;

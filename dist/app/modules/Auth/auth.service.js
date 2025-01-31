@@ -31,6 +31,7 @@ const registerUserDb = (payload) => __awaiter(void 0, void 0, void 0, function* 
         name: newUser === null || newUser === void 0 ? void 0 : newUser.name,
         email: newUser === null || newUser === void 0 ? void 0 : newUser.email,
         phoneNumber: newUser === null || newUser === void 0 ? void 0 : newUser.phoneNumber,
+        profilePhoto: newUser === null || newUser === void 0 ? void 0 : newUser.profilePhoto,
         role: newUser === null || newUser === void 0 ? void 0 : newUser.role,
         verified: newUser === null || newUser === void 0 ? void 0 : newUser.verified,
     };

@@ -16,6 +16,7 @@ exports.validateRequestCookies = void 0;
 const CatchAsync_1 = __importDefault(require("../utils/CatchAsync"));
 const validateRequest = (zodSchema) => {
     return (0, CatchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+        console.log(req.body);
         yield zodSchema.parseAsync({
             body: req.body,
         });

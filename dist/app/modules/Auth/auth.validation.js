@@ -1,24 +1,22 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.authValidation = void 0;
 const zod_1 = require("zod");
-const user_constant_1 = require("../User/user.constant");
-const mongoose_1 = __importDefault(require("mongoose"));
+// import { USER_ROLE } from "../User/user.constant";
+// import mongoose from "mongoose";
 const registerUserValidationSchema = zod_1.z.object({
     body: zod_1.z.object({
         name: zod_1.z.string().min(1, "Name is required"),
-        role: zod_1.z.nativeEnum(user_constant_1.USER_ROLE).optional(),
+        // role: z.nativeEnum(USER_ROLE).optional(),
         email: zod_1.z.string().email("Invalid email address"),
-        follower: zod_1.z.array(zod_1.z.instanceof(mongoose_1.default.Types.ObjectId)).optional(),
-        following: zod_1.z.array(zod_1.z.instanceof(mongoose_1.default.Types.ObjectId)).optional(),
-        upVotesItem: zod_1.z.array(zod_1.z.instanceof(mongoose_1.default.Types.ObjectId)).optional(),
-        downVotesItem: zod_1.z.array(zod_1.z.instanceof(mongoose_1.default.Types.ObjectId)).optional(),
+        // follower: z.array(z.instanceof(mongoose.Types.ObjectId)).optional(),
+        // following: z.array(z.instanceof(mongoose.Types.ObjectId)).optional(),
+        // upVotesItem: z.array(z.instanceof(mongoose.Types.ObjectId)).optional(),
+        // downVotesItem: z.array(z.instanceof(mongoose.Types.ObjectId)).optional(),
         password: zod_1.z.string().min(6, "Password must be at least 6 characters"),
         phoneNumber: zod_1.z.string().optional(),
-        verified: zod_1.z.boolean().optional(),
+        address: zod_1.z.string().optional(),
+        // verified: z.boolean().optional(),
         profilePhoto: zod_1.z.string().optional(),
     }),
 });
@@ -28,14 +26,16 @@ const updateUserValidationSchema = zod_1.z.object({
         phoneNumber: zod_1.z.string().optional(),
         profilePhoto: zod_1.z.string().optional(),
         address: zod_1.z.string().optional(),
-        links: zod_1.z
-            .array(zod_1.z
-            .object({
-            socialName: zod_1.z.string().optional(),
-            url: zod_1.z.string().optional(),
-        })
-            .optional())
-            .optional(),
+        // links: z
+        //   .array(
+        //     z
+        //       .object({
+        //         socialName: z.string().optional(),
+        //         url: z.string().optional(),
+        //       })
+        //       .optional()
+        //   )
+        //   .optional(),
     }),
 });
 const loginValidation = zod_1.z.object({
