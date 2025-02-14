@@ -111,7 +111,7 @@ const addComment = async (
 ) => {
   const postExist = await Post.findById(postId);
   const userExist = await User.findById(payload.userId);
-  console.log(postExist, userExist);
+  // console.log(postExist, userExist);
 
   if (!postExist || !userExist) {
     throw new AppError(status.NOT_FOUND, "Post or User not found");
