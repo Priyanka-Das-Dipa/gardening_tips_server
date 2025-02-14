@@ -103,6 +103,7 @@ const handleVote = (postId, payload) => __awaiter(void 0, void 0, void 0, functi
 const addComment = (postId, payload) => __awaiter(void 0, void 0, void 0, function* () {
     const postExist = yield post_model_1.Post.findById(postId);
     const userExist = yield user_modal_1.User.findById(payload.userId);
+    console.log(postExist, userExist);
     if (!postExist || !userExist) {
         throw new AppError_1.default(http_status_1.default.NOT_FOUND, "Post or User not found");
     }

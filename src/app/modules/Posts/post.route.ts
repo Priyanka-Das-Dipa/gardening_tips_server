@@ -18,17 +18,17 @@ router.get("/postby-user/:id", postController.getPostByUserId);
 router.get("/voteSummery/:id", postController.postVoteSummery);
 router.put(
   "/handle-voting/:postId",
-  authGaurd(USER_ROLE.ADMIN, USER_ROLE.USER),
+  // authGaurd(USER_ROLE.ADMIN, USER_ROLE.USER),
   postController.handleVoting
 );
 router.put(
   "/handle-comment/:postId",
-  authGaurd(USER_ROLE.ADMIN, USER_ROLE.USER),
+  // authGaurd(USER_ROLE.ADMIN, USER_ROLE.USER),
   postController.addComments
 );
 router.put(
   "/update-post/:postId",
-  authGaurd(USER_ROLE.USER, USER_ROLE.ADMIN),
+  // authGaurd(USER_ROLE.USER, USER_ROLE.ADMIN),
   validateRequest(postUpdateValidationSchema),
   postController.updatePost
 );

@@ -11,13 +11,13 @@ import { User } from "../modules/User/user.modal";
 const authGaurd = (...requiredRoles: (keyof typeof USER_ROLE)[]) => {
   return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const token = req.headers.authorization;
-    console.log(token);
+    // console.log(token);
     // check if the token is missing
     if (!token) {
       throw new AppError(status.UNAUTHORIZED, "Your are not authorized");
     }
     const bearer = token.split(" ");
-    console.log(bearer[1]);
+    // console.log(bearer[1]);
     const decoded = verifyToken(
       bearer[1],
       config.access_token_secret as string

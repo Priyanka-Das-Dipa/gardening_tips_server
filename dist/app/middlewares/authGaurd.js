@@ -21,13 +21,13 @@ const user_modal_1 = require("../modules/User/user.modal");
 const authGaurd = (...requiredRoles) => {
     return (0, CatchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
         const token = req.headers.authorization;
-        console.log(token);
+        // console.log(token);
         // check if the token is missing
         if (!token) {
             throw new AppError_1.default(http_status_1.default.UNAUTHORIZED, "Your are not authorized");
         }
         const bearer = token.split(" ");
-        console.log(bearer[1]);
+        // console.log(bearer[1]);
         const decoded = (0, verifyJWT_1.verifyToken)(bearer[1], config_1.default.access_token_secret);
         const { role, email } = decoded;
         // check if the use is exist
